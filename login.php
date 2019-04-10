@@ -1,46 +1,30 @@
 <?php
 
+// Create user session
+session_start();
+
 if (!empty($_POST)) {
+	if (isset($_POST['username']) && isset($_POST['password'])) {
+		//Get user submitted data from db
+		$conn = new mysqli('sql1.njit.edu', 'rf57', 'secret', 'rf57');
+		$stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
+		$stmt->bind_param('s', $_POST['username']);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$user = $result->fetch_object();
 
-    // Connect to MySQL
-    $mysqli = new mysqli('sql1.njit.edu', 'rf57', 'secret', 'rf57');
 
-    // Check if connection failed
-    if ($mysqli->connect_error) {
-        die("Connect error: ". $mysqli->connect_errno. ': ' .$mysqli->connect_error);
-    }
-
-    // Insert data to user table
-    $sql = "INSERT INTO user (username, fname, lname, college, major)
-            VALUES (
-            '{$mysqli->real_escape_string($_POST['username'])}', 
-            '{$mysqli->real_escape_string($_POST['fname'])}', 
-            '{$mysqli->real_escape_string($_POST['lname'])}',
-            '{$mysqli->real_escape_string($_POST['college'])}',
-            '{$mysqli->real_escape_string($_POST['major'])}'
-            )";
-
-     $insert = $mysqli->query($sql);
-
-     // Print response
-
-     if ($insert) {
-         echo "Succesful Row ID: {$mysqli->insert_id}";
-     } else {
-         die("Error: " {$mysqli->connect_errno} : {$mysqli->connect_error}");
-     }  
-
-     // Close the connection
-    $mysqli->close();
+		// Verify user and get $_SESSION
+		if (password_verify($_POST['password'], $user->password)) {
+			$_SESSION['id'] = $user->ID;
+		}
+	}
 }
+session_destroy();
 ?>
+
 <form method="post" action="">
-    <input name="username" type="text">
-    <input name="fname" type ="text">
-    <input name="lname" type="text">
-    <input name="college" type="text">
-    <input name="major" type="text">
+	<input name="username" type="text" placeholder="Please enter your username" required>
+	<input name="password" type="text" placeholder="Please enter your password" required>
+	<input type="submit" value="Submit">
 </form>
-
-
-             

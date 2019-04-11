@@ -1,30 +1,54 @@
 <?php
 
-// Create user session
-session_start();
+include('backend/init.php');
 
-if (!empty($_POST)) {
-	if (isset($_POST['username']) && isset($_POST['password'])) {
-		//Get user submitted data from db
-		$conn = new mysqli('sql1.njit.edu', 'rf57', 'secret', 'rf57');
-		$stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
-		$stmt->bind_param('s', $_POST['username']);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		$user = $result->fetch_object();
+// Define errors array for logging
+$errors = array();
 
+// Check conditions for valid auth and create entry in errors if conditions not met
+if (isset($_POST['username'], $_POST['password'])) {
+    if (empty($_POST['username'])) {
+        $errors[] = 'The username must not be empty';
+    }
 
-		// Verify user and get $_SESSION
-		if (password_verify($_POST['password'], $user->password)) {
-			$_SESSION['id'] = $user->ID;
-		}
-	}
+    if (empty($_POST['password'])) {
+        $errors[] = 'The password must not be empty.';
+    }
+    /*
+
+    if valid_credentials($_POST['username'], $_POST['password'] ==== false) {
+    	$error[] = "Username / Password incorrect.";
+    }
+
+    */
+    // If no errors persist then redirect to protected
+    if(empty($errors)) {
+    	$_SESSION['username'] = htmlentities($_POST['username']);
+
+    	header('Location: protected.php');
+    	die();
+    }
 }
-session_destroy();
+
 ?>
 
-<form method="post" action="">
-	<input name="username" type="text" placeholder="Please enter your username" required>
-	<input name="password" type="text" placeholder="Please enter your password" required>
-	<input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+	<p>
+		You can register for an account
+		if you do not already have one here
+		<a href="register.php">Register Here</a>
+	</p>
+	<form method="post" action="">
+		<input name="username" type="text" placeholder="Please enter your username" required>
+		<input name="password" type="text" placeholder="Please enter your password" required>
+		<input type="submit" value="Submit">
+	</form>
+
+
+</body>
+</html>

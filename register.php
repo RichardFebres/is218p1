@@ -1,39 +1,30 @@
 <?php
 
-if (!empty($_POST)) {
+include('backend/init.php');
 
-    // Connect to MySQL
-    $mysqli = new mysqli('sql1.njit.edu', 'rf57', 'secret', 'rf57');
+$errors = array();
 
-    // Check if connection failed
-    if ($mysqli->connect_error) {
-        die("Connect error: ". $mysqli->connect_errno. ': ' .$mysqli->connect_error);
+if (isset($_POST['username'], $_POST['password'])) {
+    if (empty($_POST['username'])) {
+        $errors[] = 'The username must not be empty';
     }
 
-    // Insert data to user table
-    $sql = "INSERT INTO user (username, fname, lname, college, major)
-            VALUES (
-            '{$mysqli->real_escape_string($_POST['username'])}', 
-            '{$mysqli->real_escape_string($_POST['password'])}',
-            '{$mysqli->real_escape_string($_POST['fname'])}', 
-            '{$mysqli->real_escape_string($_POST['lname'])}',
-            '{$mysqli->real_escape_string($_POST['college'])}',
-            '{$mysqli->real_escape_string($_POST['major'])}'
-            )";
+    if (empty($_POST['password'])) {
+        $errors[] = 'The password must not be empty.';
+    }
 
-     $insert = $mysqli->query($sql);
+    if(empty($errors)) {
+        add_users($_POST['username'], $_POST['password']);
 
-     // Print response
+        $_SESSION['username'] = htmlentities($_POST['username']);
 
-     if ($insert) {
-         echo "Succesful Row ID: {$mysqli->insert_id}";
-     } else {
-         die("Error: {$mysqli->connect_errno} : {$mysqli->connect_error}");
-     }
-
-     // Close the connection
-    $mysqli->close();
+        header("Location: protected.php");
+        die();
+    }
 }
+
+
+
 ?>
 
 <form method="post" action="">

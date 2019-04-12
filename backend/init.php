@@ -18,16 +18,14 @@ if (in_array($page, $exceptions) === false) {
 }
 
 // Connect to DB
-mysqli_connect('127.0.0.1', 'user', 'passwd');
-mysqli_select_db('user_db');
+$con = mysqli_connect('127.0.0.1', 'user', 'passwd', 'db_name');
 
- /* Check if connection failed
-    if ($mysqli->connect_error) {
-        die("Connect error: ". $mysqli->connect_errno. ': ' .$mysqli->connect_error);
+  // Check if connection failed
+    if (mysqli_connect_errno()) {
+    	echo "Failed to connect to MySQL: ". mysqli_connect_error();
     }
- */
+
 
 // Define path for the file being loaded which is this.
 $path = dirname(__FILE__);
 
-include("{$path}/backend/init.php");

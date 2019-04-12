@@ -28,7 +28,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 ?>
 
 <form method="post" action="">
-    <input name="username" type="text" placeholder="Please enter a user name"required>
+    <input name="username" type="email" placeholder="Please enter a user name"required>
     <input name="password" type ="password" placeholder=" Please enter a password" minlength="8" required>
     <input name="fname" type ="text" placeholder="Please enter your first name"required>
     <input name="lname" type="text" placeholder="Please enter your last name"required>

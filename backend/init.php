@@ -32,4 +32,6 @@ $con = mysqli_connect('127.0.0.1', 'root', '', 'is218p1');
 // Define path for the file being loaded which is this.
 $path = dirname(__FILE__);
 
+include("backend/init.php");
+
 ?>

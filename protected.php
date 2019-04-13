@@ -1,5 +1,4 @@
-<?php include('backend/init.php'); ?>
-
+<?php include('backend/server.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,9 @@
 <body>
 	<p>
 		You are logged in as <?php echo $_SESSION['username']; ?>
-		Your name is: <?php echo $_SESSION['fname]'." ".$_SESSION['lname]';?>
+
+        <!-- Change this to be accessed from the database instead -->
+		Your name is: <?php echo $_SESSION['fname']." ".$_SESSION['lname']; ?>
 		You attend: <?php echo $_SESSION['college']; ?>
 		Your chosen major is: <?php echo $_SESSION['major']; ?>
 	</p>

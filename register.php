@@ -1,6 +1,6 @@
 <?php
 
-include('backend/init.php');
+#include('backend/init.php');
 
 $errors = array();
 
@@ -27,15 +27,69 @@ if (isset($_POST['username'], $_POST['password'])) {
 
 ?>
 
-<form method="post" action="">
-    <input name="username" type="email" placeholder="Please enter a user name"required>
-    <input name="password" type ="password" placeholder=" Please enter a password" minlength="8" required>
-    <input name="fname" type ="text" placeholder="Please enter your first name"required>
-    <input name="lname" type="text" placeholder="Please enter your last name"required>
-    <input name="college" type="text" placeholder="Please enter your college" required>
-    <input name="major" type="text" placeholder="PLease enter your major"required>
-    <input value="Submit" type="submit">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="background"></div>
 
+<section id="content">
+    <div id="register-card-wrapper">
+        <section id="register-card-left">
+            <h3 id="right-header">Hello, Neighbor!</h3>
+            <h5 id="right-subText">Already have an account? Head over to the sign in page.</h5>
+            <a id="button-signup" href="login.php">SIGN IN</a>
+        </section>
 
+        <section id="register-card-right">
+            <div id="logo"></div>
+            <h3 id="card-header">Sign Up For An Account</h3>
+            <h5 id="card-subHeader">It's free!</h5>
+
+            <form method="post" action="" id="login-form">
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="email"></div>
+                    <input class="input-textField" name="username" type="email" placeholder="Email" required>
+                </div>
+
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="password"></div>
+                    <input class="input-textField" name="password" type="password" placeholder="Password" required>
+                </div>
+
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="name-first"></div>
+                    <input class="input-textField" name="password" type="text" placeholder="First Name" required>
+                </div>
+
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="name-last"></div>
+                    <input class="input-textField" name="password" type="text" placeholder="Last Name" required>
+                </div>
+
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="school"></div>
+                    <input class="input-textField" name="password" type="text" placeholder="School" required>
+                </div>
+
+                <div class="inputItem-wrapper">
+                    <div class="input-textField-image" id="major"></div>
+                    <input class="input-textField" name="password" type="text" placeholder="Major" required>
+                </div>
+
+                <input type="submit" value="SIGN UP" id="input-submit">
+
+            </form>
+
+        </section><!-- end card-left -->
+
+    </div><!-- end card-wrapper -->
+
+</section><!-- end content-->
+</body>
+</html>
 

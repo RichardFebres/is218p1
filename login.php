@@ -45,10 +45,10 @@ if (isset($_POST['username'], $_POST['password'])) {
     <div id="background"></div>
 
     <section id="content">
-        <div id="card-wrapper">
-            <section id="card-left">
+        <div id="login-card-wrapper">
+            <section id="login-card-left">
                 <div id="logo"></div>
-                <h3 id="login-header">Sign in to Stormify</h3>
+                <h3 id="card-header">Sign in to Stormify</h3>
 
 	            <form method="post" action="" id="login-form">
                     <div class="inputItem-wrapper">
@@ -74,10 +74,10 @@ if (isset($_POST['username'], $_POST['password'])) {
 
             </section><!-- end card-left -->
 
-            <section id="card-right">
-                <h3 id="right-header">Hello, Neighbor!</h3>
+            <section id="login-card-right">
+                <h3 id="right-header">Welcome Back!</h3>
                 <h5 id="right-subText">Never been here before? Tell us a bit about yourself and you can begin.</h5>
-                <button id="button-signup">SIGN UP</button>
+                <a id="button-signup" href="register.php">SIGN UP</a>
             </section>
 
         </div><!-- end card-wrapper -->

@@ -1,5 +1,6 @@
 <?php
 include('backend/init.php');
+include ('backend/user.php');
 
 // Define errors array for logging
 $errors = array();

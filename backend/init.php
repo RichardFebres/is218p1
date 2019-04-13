@@ -21,7 +21,7 @@ if (in_array($page, $exceptions) === false) {
 */
 
 // Connect to DB
-$con = mysqli_connect('127.0.0.1', 'root', '', 'is218p1');
+$con = mysqli_connect('localhost', 'finley', 'password', 'is218p1');
 
   // Check if connection failed
     if (mysqli_connect_errno()) {

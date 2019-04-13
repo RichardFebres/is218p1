@@ -30,4 +30,5 @@ function add_user($username, $password, $fname, $lname, $college, $major) {
     	'{$lname}', '{$college}', '{$major}')");
 }
 
+include("backend/user.php");
 ?>

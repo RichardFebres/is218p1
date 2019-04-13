@@ -6,8 +6,10 @@ session_start();
 // Create exceptions array to store errors for routes
 $exceptions = array('register', 'login');
 
+/*
 // Get the current script as a string
 $page = substr(end(explode('/', $_SERVER['SCRIPT_NAME']), 0, -4));
+
 
 // If errors exist redirect to login page to create user session
 if (in_array($page, $exceptions) === false) {
@@ -16,9 +18,10 @@ if (in_array($page, $exceptions) === false) {
 		die();
 	}
 }
+*/
 
 // Connect to DB
-$con = mysqli_connect('127.0.0.1', 'user', 'passwd', 'db_name');
+$con = mysqli_connect('127.0.0.1', 'root', '', 'is218p1');
 
   // Check if connection failed
     if (mysqli_connect_errno()) {
@@ -29,3 +32,5 @@ $con = mysqli_connect('127.0.0.1', 'user', 'passwd', 'db_name');
 // Define path for the file being loaded which is this.
 $path = dirname(__FILE__);
 
+
+    ?>

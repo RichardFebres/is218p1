@@ -38,7 +38,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 <div id="background"></div>
 
 <section id="content">
-    <div id="register-card-wrapper">
+    <div class="card-wrapper" id="register">
         <section id="register-card-left">
             <h3 id="right-header">Hello, Neighbor!</h3>
             <h5 id="right-subText">Already have an account? Head over to the sign in page.</h5>

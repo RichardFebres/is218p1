@@ -1,36 +1,43 @@
 <?php
-include('backend/init.php');
-include ('backend/user.php');
+
+// Initialize the connection to the server
+require_once 'backend/server.php';
+
+#include ('backend/user.php');
 
 // Define errors array for logging
 $errors = array();
 
+/*
 // Check conditions for valid auth and create entry in errors if conditions not met
-
 if (isset($_POST['username'], $_POST['password'])) {
     if (empty($_POST['username'])) {
         $errors[] = 'The username must not be empty';
     }
 
-        if (empty($_POST['password'])) {
-            $errors[] = 'The password must not be empty.';
-        }
+    if (empty($_POST['password'])) {
+        $errors[] = 'The password must not be empty.';
+    }
 
+    if (valid_credentials($_POST['username'], $_POST['password'] === false)) {
+        $error[] = "Username / Password incorrect.";
+    }
 
-            if (valid_credentials($_POST['username'], $_POST['password'] === false)) {
-                $error[] = "Username / Password incorrect.";
-            }
+    // If no errors persist then redirect to protected
+    if(empty($errors)) {
+        $_SESSION['username'] = htmlentities($_POST['username']);
 
-
-            // If no errors persist then redirect to protected
-            if(empty($errors)) {
-                $_SESSION['username'] = htmlentities($_POST['username']);
-
-                header('Location: protected.php');
-                die();
-            }
+        header('Location: protected.php');
+        die();
+    }
 
 }
+else
+{
+    echo "username and password not set...";
+}
+*/
+
 ?>
 
 <!DOCTYPE html>

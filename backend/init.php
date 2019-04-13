@@ -1,10 +1,9 @@
 <?php
 
-// Create user session
-session_start();
 
-// Create exceptions array to store errors for routes
-$exceptions = array('register', 'login');
+
+
+
 
 /*
 // Get the current script as a string
@@ -20,18 +19,15 @@ if (in_array($page, $exceptions) === false) {
 }
 */
 
-// Connect to DB
-$con = mysqli_connect('localhost', 'finley', 'password', 'is218p1');
 
-  // Check if connection failed
-    if (mysqli_connect_errno()) {
-    	echo "Failed to connect to MySQL: ". mysqli_connect_error();
-    }
-
+// Check if connection failed
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: ". mysqli_connect_error();
+}
 
 // Define path for the file being loaded which is this.
 $path = dirname(__FILE__);
 
-include("backend/init.php");
+#include("backend/init.php");
 
 ?>

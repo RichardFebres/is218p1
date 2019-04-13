@@ -1,7 +1,7 @@
 <?php
 
-include("backend/init.php");
-include("backend/user.php");
+include("backend/server.php");
+#include("backend/user.php");
 
 $errors = array();
 

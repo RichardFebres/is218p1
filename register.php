@@ -15,7 +15,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     }
 
     if(empty($errors)) {
-        add_users($_POST['username'], $_POST['password']);
+        add_users($_POST['username'], $_POST['password'], $_POST['fname'], $_POST['lname'], $_POST['college'], $_POST['major']);
 
         $_SESSION['username'] = htmlentities($_POST['username']);
 
@@ -64,22 +64,22 @@ if (isset($_POST['username'], $_POST['password'])) {
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-first"></div>
-                    <input class="input-textField" name="password" type="text" placeholder="First Name" required>
+                    <input class="input-textField" name="fname" type="text" placeholder="First Name" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-last"></div>
-                    <input class="input-textField" name="password" type="text" placeholder="Last Name" required>
+                    <input class="input-textField" name="lname" type="text" placeholder="Last Name" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="school"></div>
-                    <input class="input-textField" name="password" type="text" placeholder="School" required>
+                    <input class="input-textField" name="college" type="text" placeholder="School" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="major"></div>
-                    <input class="input-textField" name="password" type="text" placeholder="Major" required>
+                    <input class="input-textField" name="major" type="text" placeholder="Major" required>
                 </div>
 
                 <input type="submit" value="SIGN UP" id="input-submit">

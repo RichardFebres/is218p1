@@ -6,14 +6,9 @@ require_once 'backend/user.php';
 // Create user session
 session_start();
 
-// Define the database information
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'is218p1');
-
-// Connect to DB
-$con = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: ". mysqli_connect_error();
+}
 
 // Create exceptions array to store errors for routes
 $exceptions = array('register', 'login');
@@ -38,6 +33,5 @@ if (isset($_POST['username'], $_POST['password'])) {
     }
 
 }
-
 
 ?>

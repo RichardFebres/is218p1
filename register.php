@@ -15,9 +15,9 @@ if (isset($_POST['username'], $_POST['password'])) {
     }
 
     if(empty($errors)) {
-        add_users($_POST['username'], $_POST['password'], $_POST['fname'], $_POST['lname'], $_POST['college'], $_POST['major']);
+        add_users($_POST['register_username'], $_POST['register_password'], $_POST['register_fname'], $_POST['register_lname'], $_POST['register_college'], $_POST['register_major']);
 
-        $_SESSION['username'] = htmlentities($_POST['username']);
+        $_SESSION['register_username'] = htmlentities($_POST['register_username']);
 
         header("Location: protected.php");
         die();
@@ -54,32 +54,32 @@ if (isset($_POST['username'], $_POST['password'])) {
             <form method="post" action="" id="login-form">
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="email"></div>
-                    <input class="input-textField" name="username" type="email" placeholder="Email" required>
+                    <input class="input-textField" name="register_username" type="email" placeholder="Email" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="password"></div>
-                    <input class="input-textField" name="password" type="password" placeholder="Password" required>
+                    <input class="input-textField" name="register_password" type="password" placeholder="Password" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-first"></div>
-                    <input class="input-textField" name="fname" type="text" placeholder="First Name" required>
+                    <input class="input-textField" name="register_fname" type="text" placeholder="First Name" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-last"></div>
-                    <input class="input-textField" name="lname" type="text" placeholder="Last Name" required>
+                    <input class="input-textField" name="register_lname" type="text" placeholder="Last Name" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="school"></div>
-                    <input class="input-textField" name="college" type="text" placeholder="School" required>
+                    <input class="input-textField" name="register_college" type="text" placeholder="School" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="major"></div>
-                    <input class="input-textField" name="major" type="text" placeholder="Major" required>
+                    <input class="input-textField" name="register_major" type="text" placeholder="Major" required>
                 </div>
 
                 <input type="submit" value="SIGN UP" id="input-submit">

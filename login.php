@@ -3,12 +3,10 @@
 // Initialize the connection to the server
 require_once 'backend/server.php';
 
-#include ('backend/user.php');
-
 // Define errors array for logging
 $errors = array();
 
-/*
+
 // Check conditions for valid auth and create entry in errors if conditions not met
 if (isset($_POST['username'], $_POST['password'])) {
     if (empty($_POST['username'])) {
@@ -19,24 +17,22 @@ if (isset($_POST['username'], $_POST['password'])) {
         $errors[] = 'The password must not be empty.';
     }
 
-    if (valid_credentials($_POST['username'], $_POST['password'] === false)) {
+    if (valid_credentials($con, $_POST['username'], $_POST['password'] === false)) {
         $error[] = "Username / Password incorrect.";
     }
 
     // If no errors persist then redirect to protected
     if(empty($errors)) {
+
+        add_user( $_POST['register_username'], $_POST['register_password'], $_POST['register_fname'], $_POST['register_lname'], $_POST['register_college'], $_POST['register_major']);
+
         $_SESSION['username'] = htmlentities($_POST['username']);
 
         header('Location: protected.php');
         die();
     }
+}
 
-}
-else
-{
-    echo "username and password not set...";
-}
-*/
 
 ?>
 
@@ -106,33 +102,33 @@ else
                 <form method="post" action="" id="login-form">
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="email"></div>
-                        <input class="input-textField" name="username" type="email" placeholder="Email" required>
+                        <input class="input-textField" name="register_username" type="email" placeholder="Email" required>
                     </div>
 
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="password"></div>
-                        <input class="input-textField" name="password" type="password" placeholder="Password" required>
+                        <input class="input-textField" name="register_password" type="password" placeholder="Password" required>
                     </div>
 
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="name-first"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="First Name" required>
+                        <input class="input-textField" name="register_fname" type="text" placeholder="First Name" required>
                     </div>
 
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="name-last"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="Last Name" required>
+                        <input class="input-textField" name="register_lname" type="text" placeholder="Last Name" required>
                     </div>
 
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="school"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="School" required>
+                        <input class="input-textField" name="register_college" type="text" placeholder="School" required>
                     </div>
 
                     <div class="inputItem-wrapper">
                         <div class="input-textField-image" id="major"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="Major" required>
-                    </div>
+                        <input class="input-textField" name="register_major" type="text" placeholder="Major" required>
+      1              </div>
 
                     <input type="submit" value="SIGN UP" id="input-submit">
 

@@ -1,6 +1,5 @@
 <?php
 
-#include("backend/init.php");
 
 // Checks if the given user exists in table
 function user_exists($username) {
@@ -30,8 +29,12 @@ function valid_credentials($username, $password, $con) {
 function add_user($username, $password, $fname, $lname, $college, $major) {
     $username = mysqli_real_escape_string($con, $username);
     $password = sha1($password);
+	$fname = mysqli_real_escape_string($con, $fname);
+	$lname = mysqli_real_escape_string($con, $lname);
+	$college = mysqli_real_escape_string($con, $college);
+	$major = mysqli_real_escape_string($con, $major);
 
-    mysqli_query($con, "INSERT INTO 'user' ('username', 'password', 'fname', 'lname','college', 'major') VALUES('{$username}', '{$password}', '{$fname}', 
+	mysqli_query($con, "INSERT INTO 'user' ('id', 'username', 'password', 'fname', 'lname','college', 'major') VALUES('{$username}', '{$password}', '{$fname}',
     	'{$lname}', '{$college}', '{$major}')");
 }
 

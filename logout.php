@@ -9,7 +9,15 @@ $_SESSION = array();
 //Close session
 session_destroy();
 
-// Redirect to protected
-header('Location: protected.php');
+echo "You have successfully signed out.";
+echo "<br>";
+echo "<br>";
 
 ?>
+
+<html>
+    <body>
+        <a href="login.php">Go back to login page</a>
+    </body>
+
+</html>

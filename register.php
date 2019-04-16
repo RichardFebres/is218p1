@@ -1,29 +1,94 @@
 <?php
+require_once "backend/config.php";
+require_once "backend/user.php";
 
-include("backend/server.php");
-#include("backend/user.php");
-
+// Store errors in here
 $errors = array();
 
-if (isset($_POST['username'], $_POST['password'])) {
-    if (empty($_POST['username'])) {
-        $errors[] = 'The username must not be empty';
-    }
+// Adds a user to the database
+function addUser($username, $password, $fname, $lname, $school, $major)
+{
+    // Get the connection to the db
+    $con = getConnection();
 
-    if (empty($_POST['password'])) {
-        $errors[] = 'The password must not be empty.';
-    }
+    // Clean/convert data for database injection
+    $username = trim($username);
+    $password_hashed = sha1($password);
 
-    if(empty($errors)) {
-        add_users($_POST['register_username'], $_POST['register_password'], $_POST['register_fname'], $_POST['register_lname'], $_POST['register_college'], $_POST['register_major']);
+    // Prepare query
+    $sql = "INSERT INTO users (id, username, password, fname, lname, school, major) VALUES (DEFAULT, '$username', '$password_hashed', '$fname', '$lname', '$school', '$major')";
 
-        $_SESSION['register_username'] = htmlentities($_POST['register_username']);
-
-        header("Location: protected.php");
-        die();
-    }
+    // Insert into database
+    mysqli_query($con, $sql);
 }
 
+// REGISTER VALIDATION
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Okay, so user has input some text for both fields
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $school = $_POST['school'];
+    $major = $_POST['major'];
+
+    // Validate username
+    if ($username == '') {
+        array_push($errors, 'The username must not be empty');
+    } elseif($username == 'hello@gmail.com') {
+        array_push($errors, 'Invalid username');
+    }
+
+    // Validate password
+    if ($password == '') {
+        array_push($errors, 'The username must not be empty');
+    }
+
+    // Validate first name
+    if ($fname == '') {
+        array_push($errors, 'Please enter your first name');
+    } elseif($fname == 'bob') {
+        array_push($errors, 'Invalid first name');
+    }
+
+    // Validate last name
+    if ($lname == '') {
+        array_push($errors, 'The username must not be empty');
+    }
+
+    // Validate school
+    if ($school == '') {
+        array_push($errors, 'The username must not be empty');
+    }
+
+    // Validate major
+    if ($major == '') {
+        array_push($errors, 'The username must not be empty');
+    }
+
+    // Check if there are any errors
+    if (empty($errors)) {
+        // No errors, register the user into the database
+        addUser($username, $password, $fname, $lname, $school, $major);
+        echo 'Registration successful.';
+
+        // Start a session
+        session_start();
+
+        // Store current username in session variable
+        $_SESSION['username'] = $username;
+
+        // Direct newly registered user to their profile page
+        header("Location: protected.php");
+
+    } else {
+        // Display errors
+        // We need to make this look nicer
+        foreach($errors as $error) {
+            echo $error, '<br>';
+        }
+    }
+}
 
 
 ?>
@@ -64,24 +129,23 @@ if (isset($_POST['username'], $_POST['password'])) {
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-first"></div>
-                    <input class="input-textField" name="register_fname" type="text" placeholder="First Name" required>
+                    <input class="input-textField" name="fname" type="text" placeholder="First Name" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-last"></div>
-                    <input class="input-textField" name="register_lname" type="text" placeholder="Last Name" required>
+                    <input class="input-textField" name="lname" type="text" placeholder="Last Name" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="school"></div>
-                    <input class="input-textField" name="register_college" type="text" placeholder="School" required>
+                    <input class="input-textField" name="school" type="text" placeholder="School" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="major"></div>
-                    <input class="input-textField" name="register_major" type="text" placeholder="Major" required>
+                    <input class="input-textField" name="major" type="text" placeholder="Major" required>
                 </div>
-
                 <input type="submit" value="SIGN UP" id="input-submit">
 
             </form>

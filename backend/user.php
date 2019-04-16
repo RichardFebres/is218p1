@@ -26,14 +26,11 @@ function valid_credentials($username, $password, $con) {
 
 }
 
-// Adds a user to the database
-function add_user($username, $password, $fname, $lname, $college, $major) {
-    $username = mysqli_real_escape_string($con, $username);
-    $password = sha1($password);
-
-    mysqli_query($con, "INSERT INTO 'user' ('username', 'password', 'fname', 'lname','college', 'major') VALUES('{$username}', '{$password}', '{$fname}', 
-    	'{$lname}', '{$college}', '{$major}')");
+function testFunction() {
+	echo "testing123...";
 }
+
+
 
 #include("backend/user.php");
 ?>

@@ -3,8 +3,6 @@
 // Initialize the connection to the server
 require_once 'backend/server.php';
 
-#include ('backend/user.php');
-
 // Define errors array for logging
 $errors = array();
 
@@ -37,6 +35,26 @@ else
     echo "username and password not set...";
 }
 */
+
+// LOGIN
+if (isset($_POST['username'], $_POST['password'])) {
+    // Okay, so user has input some text for both fields
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Lets validate their input
+    if (valid_credentials($username, $password, $con)) {
+        // Credentials validated successfully
+        // Log the boi in
+        $_SESSION['username'] = $username;
+        $_SESSION['success'] = "You are now logged in";
+        header('location: protected.php');
+    } else {
+        // User doesnt exist
+        echo "user doesnt exist";
+        array_push($errors, "Wrong username/password combination");
+    }
+}
 
 ?>
 
@@ -85,62 +103,12 @@ else
             <section id="login-card-right">
                 <h3 id="right-header">Welcome Back!</h3>
                 <h5 id="right-subText">Never been here before? Tell us a bit about yourself and you can begin.</h5>
-                <a id="button-signup" onclick="register_slideIn()">SIGN UP</a>
+                <a id="button-signup" href="register.php">SIGN UP</a>
             </section>
 
         </div><!-- end card-wrapper -->
 
-        <!-- Register -->
-        <div class="card-wrapper" id="register">
-            <section id="register-card-left">
-                <h3 id="right-header">Hello, Neighbor!</h3>
-                <h5 id="right-subText">Already have an account? Head over to the sign in page.</h5>
-                <a id="button-signup" onclick="register_slideOut()">SIGN IN</a>
-            </section>
 
-            <section id="register-card-right">
-                <div id="logo"></div>
-                <h3 id="card-header">Sign Up For An Account</h3>
-                <h5 id="card-subHeader">It's free!</h5>
-
-                <form method="post" action="" id="login-form">
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="email"></div>
-                        <input class="input-textField" name="username" type="email" placeholder="Email" required>
-                    </div>
-
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="password"></div>
-                        <input class="input-textField" name="password" type="password" placeholder="Password" required>
-                    </div>
-
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="name-first"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="First Name" required>
-                    </div>
-
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="name-last"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="Last Name" required>
-                    </div>
-
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="school"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="School" required>
-                    </div>
-
-                    <div class="inputItem-wrapper">
-                        <div class="input-textField-image" id="major"></div>
-                        <input class="input-textField" name="password" type="text" placeholder="Major" required>
-                    </div>
-
-                    <input type="submit" value="SIGN UP" id="input-submit">
-
-                </form>
-
-            </section><!-- end card-left -->
-
-        </div><!-- end card-wrapper -->
 
     </section><!-- end content-->
 

@@ -355,8 +355,6 @@ input:invalid {
     box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
     margin-top: 0;
-    float: right;
-    margin-right: -100%;
 }
 #register-card-left {
     width: 34%;

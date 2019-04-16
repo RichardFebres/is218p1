@@ -18,7 +18,10 @@ if (isset($_POST['username'], $_POST['password'])) {
     // Lets validate their input
     if (valid_credentials($username, $password, $con)) {
         // Credentials validated successfully
-        // Log the boi in
+
+        // Start the session
+        session_start();
+
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";
         header('location: protected.php');

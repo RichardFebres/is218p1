@@ -16,7 +16,7 @@ function addUser($username, $password, $fname, $lname, $school, $major)
     $password_hashed = sha1($password);
 
     // Prepare query
-    $sql = "INSERT INTO user (id, username, password, fname, lname, school, major) VALUES (DEFAULT, '$username', '$password_hashed', '$fname', '$lname', '$school', '$major')";
+    $sql = "INSERT INTO users (id, username, password, fname, lname, school, major) VALUES (DEFAULT, '$username', '$password_hashed', '$fname', '$lname', '$school', '$major')";
 
     // Insert into database
     mysqli_query($con, $sql);

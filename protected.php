@@ -10,7 +10,7 @@ $con = getConnection();
 <html>
 <head>
     <meta charset="utf-8"
-    <meta lang="en">s
+    <meta lang="en">
     <title>Protected</title>
 </head>
 <body>
@@ -35,26 +35,9 @@ $con = getConnection();
         }
         ?>
 	</p>
-	<p>
-		<a href="logout.php">Logout</a>
-
-    if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "Username: " . $row["username"]."<br>";
-            echo "Name:" .$row["f"] . " ".$row["lname"]."<br>";
-            echo "College:" .$row["college"]."<br>";
-            echo "Major:" .$row["major"]."<br>";
-        }
-    } else {
-        echo "0 results";
-    }
-
-    ?>
-</p>
-<p>
-    <a href="logout.php">Logout</a>
-
-</p>
+    <p>
+        <a href="logout.php">Logout</a>
+    </p>
 
 </body>
 </html>

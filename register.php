@@ -119,12 +119,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form method="post" action="" id="login-form">
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="email"></div>
-                    <input class="input-textField" name="register_username" type="email" placeholder="Email" required>
+                    <input class="input-textField" name="username" type="email" placeholder="Email" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="password"></div>
-                    <input class="input-textField" name="register_password" type="password" placeholder="Password" required>
+                    <input class="input-textField" name="password" type="password" placeholder="Password" required>
                 </div>
 
                 <div class="inputItem-wrapper">

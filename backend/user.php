@@ -24,11 +24,3 @@ function valid_credentials($username, $password, $con) {
 	return (mysqli_num_rows($results) == 1);
 
 }
-
-function testFunction() {
-	echo "testing123...";
-
-
-
-#include("backend/user.php");
-?>

@@ -1,8 +1,9 @@
 <?php
-include('backend/config.php');
-
+require('backend/config.php');
 // Start session
 session_start();
+
+$con = getConnection();
 
 ?>
 <!DOCTYPE html>

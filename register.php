@@ -16,7 +16,7 @@ function addUser($username, $password, $fname, $lname, $school, $major)
     $password_hashed = sha1($password);
 
     // Prepare query
-    $sql = "INSERT INTO users (id, username, password, fname, lname, school, major) VALUES (DEFAULT, '$username', '$password_hashed', '$fname', '$lname', '$school', '$major')";
+    $sql = "INSERT INTO user (id, username, password, fname, lname, school, major) VALUES (DEFAULT, '$username', '$password_hashed', '$fname', '$lname', '$school', '$major')";
 
     // Insert into database
     mysqli_query($con, $sql);
@@ -130,12 +130,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-first"></div>
-                    <input class="input-textField" name="fname" type="text" placeholder="First Name" required>
+                    <input class="input-textField" name="fname" type="text" placeholder="First Name" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="name-last"></div>
-                    <input class="input-textField" name="lname" type="text" placeholder="Last Name" required>
+                    <input class="input-textField" name="lname" type="text" placeholder="Last Name" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="inputItem-wrapper">

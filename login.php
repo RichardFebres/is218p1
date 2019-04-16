@@ -85,7 +85,6 @@ if (isset($_POST['username'], $_POST['password'])) {
         </div><!-- end card-wrapper -->
 
 
-
     </section><!-- end content-->
 
     <!-- Javascript -->

@@ -66,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         array_push($errors, 'The username must not be empty');
     }
 
-
     // Check if there are any errors
     if (empty($errors)) {
         // No errors, register the user into the database
@@ -120,12 +119,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form method="post" action="" id="login-form">
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="email"></div>
-                    <input class="input-textField" name="username" type="email" placeholder="Email" required>
+                    <input class="input-textField" name="register_username" type="email" placeholder="Email" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="password"></div>
-                    <input class="input-textField" name="password" type="password" placeholder="Password" required>
+                    <input class="input-textField" name="register_password" type="password" placeholder="Password" required>
                 </div>
 
                 <div class="inputItem-wrapper">
@@ -147,7 +146,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="input-textField-image" id="major"></div>
                     <input class="input-textField" name="major" type="text" placeholder="Major" required>
                 </div>
-
                 <input type="submit" value="SIGN UP" id="input-submit">
 
             </form>

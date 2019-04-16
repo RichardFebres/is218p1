@@ -1,6 +1,5 @@
 <?php
 
-#include("backend/init.php");
 
 // Checks if the given user exists in table
 function user_exists($username) {
@@ -28,7 +27,6 @@ function valid_credentials($username, $password, $con) {
 
 function testFunction() {
 	echo "testing123...";
-}
 
 
 

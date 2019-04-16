@@ -27,7 +27,6 @@ if (isset($_POST['username'], $_POST['password'])) {
         header('location: protected.php');
     } else {
         // User doesnt exist
-        echo "user doesnt exist";
         array_push($errors, "Wrong username/password combination");
     }
 }
@@ -51,6 +50,16 @@ if (isset($_POST['username'], $_POST['password'])) {
             <section id="login-card-left">
                 <div id="logo"></div>
                 <h3 id="card-header">Sign in to Stormify</h3>
+                <section id="error-container">
+                    <span class="error"><?php
+                        if (!empty($errors)) {
+                            foreach($errors as $error) {
+                                echo $error;
+                            }
+                        }
+
+                        ?></span>
+                </section>
 
 	            <form method="post" action="" id="login-form">
                     <div class="inputItem-wrapper">

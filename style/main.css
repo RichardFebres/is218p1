@@ -19,7 +19,6 @@ input:invalid {
 #content {
     margin: 0 auto;
     padding-top:8%;
-    overflow: hidden;
     text-align: center;
     whitespace: nowrap;
 }
@@ -35,7 +34,7 @@ input:invalid {
 
 .card-wrapper {
     width: 1150px;
-    height:645px;
+    height:700px;
     background-color:white;
     box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
     border-radius: 15px;
@@ -175,7 +174,7 @@ input:invalid {
 #login-form {
     width: 400px;
     margin: 0 auto;
-    padding-toP:26px;
+    padding-top:20px;
 }
 .inputItem-wrapper {
     width:100%;
@@ -262,7 +261,7 @@ input:invalid {
     cursor: pointer;
     display: flex;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 50px;
     justify-content: center;
     border: 3px #e4e4e4;
     border-style: dashed;
@@ -373,4 +372,19 @@ input:invalid {
     background-color: white;
     display:inline-block;
     border-radius: 15px;
+}
+
+
+/* Errors */
+#error-container {
+    width:100%;
+    padding-top:10px;
+
+}
+.error {
+    font-size: 16px;
+    color: #da685f;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+
 }
